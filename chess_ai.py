@@ -14,11 +14,12 @@ class ChessAi:
 
     def minimax(self, depth, is_white, board, alpha=-9999, beta=9999, is_max_player=True):
         if depth == 0:
-            return self.eval_function(board, is_white) * (-1 if is_max_player else 1)
+            return self.eval_function(board, is_white) * (1 if is_max_player else -1)
+        moves = list(board.legal_moves)
         if is_max_player:
             best_score = -9999
             a = alpha
-            for move in board.legal_moves:
+            for move in moves:
                 board.push(move)
                 best_score = max(best_score, self.minimax(depth - 1, is_white, board, alpha=a, beta=beta, is_max_player=not is_max_player))
                 board.pop()
@@ -29,7 +30,7 @@ class ChessAi:
         else:
             best_score = 9999
             b = beta
-            for move in board.legal_moves:
+            for move in moves:
                 board.push(move)
                 best_score = min(best_score, self.minimax(depth - 1, is_white, board, alpha=alpha, beta=b, is_max_player=not is_max_player))
                 board.pop()
@@ -40,10 +41,11 @@ class ChessAi:
 
     def get_strongest_move(self, player, board):
         moves = list(board.legal_moves)
+        shuffle(moves)
         ranked_moves = []
         for move in moves:
             board.push(move)
-            score = self.minimax(5, player == chess.WHITE, board)
+            score = self.minimax(7, player == chess.WHITE, board)
             ranked_moves.append((score, move))
             board.pop()
         sorted_moves = sorted(ranked_moves, key=lambda i: i[0])

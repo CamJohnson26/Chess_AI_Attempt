@@ -9,9 +9,10 @@ def play_game(debug):
     white_to_move = True
     while not board.is_game_over():
         if debug:
+            print(white_to_move)
             print("%s\n" % board)
         if white_to_move:
-            next_move = random_ai.get_move(chess.WHITE, board)
+            next_move = count_ai.get_move(chess.WHITE, board)
         else:
             next_move = count_ai.get_move(chess.BLACK, board)
         if next_move in board.legal_moves:
