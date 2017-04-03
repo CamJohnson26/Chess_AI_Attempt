@@ -1,5 +1,5 @@
 import chess
-from random import randint
+from random import randint, shuffle
 
 
 class ChessAi:
@@ -8,5 +8,14 @@ class ChessAi:
         pass
 
     def get_move(self, board):
-        avail_moves = board.legal_moves
-        return list(avail_moves)[randint(0, len(list(avail_moves)) - 1)]
+        moves = self.evaluate_board_random(board)
+        return moves[0]
+
+    def evaluate_board_random(self, board):
+        moves = list(board.legal_moves)
+        shuffle(moves)
+        return moves
+
+    def evaluate_board_simple_count(self, board):
+        moves = list(board.legal_moves)
+        return moves
