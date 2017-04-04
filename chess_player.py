@@ -3,8 +3,13 @@ from chess_ai import ChessAi, evaluate_board_random, evaluate_board_simple_count
 
 def play_game(debug):
 
-    random_ai = ChessAi(evaluate_board_random)
-    count_ai = ChessAi(evaluate_board_simple_count)
+    random_ai = ChessAi(evaluate_board_random, 0)
+    count_ai_1 = ChessAi(evaluate_board_simple_count, 1)
+    count_ai_2 = ChessAi(evaluate_board_simple_count, 2)
+    count_ai_3 = ChessAi(evaluate_board_simple_count, 3)
+    count_ai_4 = ChessAi(evaluate_board_simple_count, 4)
+    count_ai_5 = ChessAi(evaluate_board_simple_count, 5)
+    count_ai_6 = ChessAi(evaluate_board_simple_count, 6)
     board = chess.Board()
     white_to_move = True
     while not board.is_game_over():
@@ -12,9 +17,9 @@ def play_game(debug):
             print(white_to_move)
             print("%s\n" % board)
         if white_to_move:
-            next_move = count_ai.get_move(chess.WHITE, board)
+            next_move = count_ai_2.get_move(chess.WHITE, board)
         else:
-            next_move = count_ai.get_move(chess.BLACK, board)
+            next_move = count_ai_4.get_move(chess.BLACK, board)
         if next_move in board.legal_moves:
             board.push(next_move)
             white_to_move = not white_to_move
