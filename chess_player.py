@@ -1,26 +1,47 @@
+import time
+from os.path import join
+
 import chess
+import chess.pgn
 from chess_ai import ChessAi, evaluate_board_random, evaluate_board_simple_count
 
-def play_game(debug):
+def play_game(debug, fen=None):
 
-    random_ai = ChessAi(evaluate_board_random, 0)
-    count_ai_1 = ChessAi(evaluate_board_simple_count, 1)
-    count_ai_2 = ChessAi(evaluate_board_simple_count, 2)
-    count_ai_3 = ChessAi(evaluate_board_simple_count, 3)
-    count_ai_4 = ChessAi(evaluate_board_simple_count, 4)
-    count_ai_5 = ChessAi(evaluate_board_simple_count, 5)
-    count_ai_6 = ChessAi(evaluate_board_simple_count, 6)
+    white_difficulty = 2
+    black_difficulty = 5
+    # random_ai = ChessAi(evaluate_board_random, 0)
+    # count_ai_1 = ChessAi(evaluate_board_simple_count, 1)
+    white_player = ChessAi(evaluate_board_simple_count, white_difficulty)
+    # count_ai_3 = ChessAi(evaluate_board_simple_count, 3)
+    black_player = ChessAi(evaluate_board_simple_count, black_difficulty)
+    # count_ai_5 = ChessAi(evaluate_board_simple_count, 5)
+    # count_ai_6 = ChessAi(evaluate_board_simple_count, 6)
     board = chess.Board()
+    game = chess.pgn.Game()
+    if fen is not None:
+        board.set_fen('rnQ5/1p3k2/7p/2p5/P2q1P2/1pn3r1/R2P4/2BK4 w - - 2 41')
+        game.setup(board)
+    event = f"Cameron Chess AI- {time.time()}"
+    game.headers["Event"] = event
+    game.headers["White"] = str(white_player) + '-' + str(white_difficulty)
+    game.headers["Black"] = str(black_player) + '-' + str(black_difficulty)
+    node = None
     white_to_move = True
+    move_counter = 0
     while not board.is_game_over():
         if debug:
             print(white_to_move)
             print("%s\n" % board)
         if white_to_move:
-            next_move = count_ai_2.get_move(chess.WHITE, board)
+            next_move = white_player.get_move(board)
         else:
-            next_move = count_ai_4.get_move(chess.BLACK, board)
+            next_move = black_player.get_move(board)
         if next_move in board.legal_moves:
+            move_counter += 1
+            if node is None:
+                node = game.add_main_variation(next_move)
+            else:
+                node = node.add_main_variation(next_move)
             board.push(next_move)
             white_to_move = not white_to_move
     if board.is_checkmate():
@@ -30,7 +51,11 @@ def play_game(debug):
         if debug:
             print("It's a Draw!")
     print("%s moves total" % board.fullmove_number)
-    return board.result()
+    print('\n\n')
+    print(game)
+    with open(join('game_results', f"{event}.pgn"), 'w') as f:
+        f.write(str(game))
+        f.write('\n')
 
 
 def get_human_move(board):
@@ -51,8 +76,8 @@ def get_move_from_string(istr, board):
         return False
 
 
-def play_one():
-    play_game(True)
+def play_one(fen=None):
+    play_game(True, fen=fen)
 
 
 
@@ -66,4 +91,4 @@ def play_25():
 
 
 if __name__ == '__main__':
-    print(play_one())
+    play_one('rnQ5/1p3k2/7p/2p5/P2q1P2/1pn3r1/R2P4/2BK4 w - - 2 41')
