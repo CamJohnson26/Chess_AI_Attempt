@@ -7,7 +7,7 @@ from chess_ai import ChessAi, evaluate_board_random, evaluate_board_simple_count
 
 def position_eval(fen, debug):
 
-    white_player = ChessAi(evaluate_board_simple_count, 5)
+    white_player = ChessAi(evaluate_board_simple_count, 2)
     board = chess.Board()
     board.set_fen(fen)
     moves = white_player.rank_moves(board)
@@ -61,4 +61,9 @@ def position_eval(fen, debug):
     # return game
 
 if __name__ == '__main__':
-    (position_eval('rnQ5/1p3k2/7p/2p5/P2q1P2/1pn3r1/R2P4/2B1K3 b - - 3 41', False))
+    fen = '''
+    
+r7/8/8/8/3k4/8/7q/5K2 b - - 3 198
+    
+    '''
+    (position_eval(fen, False))

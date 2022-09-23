@@ -22,6 +22,13 @@ class ChessAi:
                 a = a + depth_limit
             return a
         moves = board.legal_moves
+        if moves.count() == 0:
+            if board.is_checkmate():
+                score = 9999
+                mate_move_adjusted = -1 * (depth_limit - cur_depth)
+                score = (score - mate_move_adjusted) * (-1 if is_max_player else 1)
+                return score
+            return 0
         if is_max_player:
             best_score = -9999
             a = alpha

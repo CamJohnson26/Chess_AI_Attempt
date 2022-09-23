@@ -7,8 +7,8 @@ from chess_ai import ChessAi, evaluate_board_random, evaluate_board_simple_count
 
 def play_game(debug, fen=None):
 
-    white_difficulty = 2
-    black_difficulty = 5
+    white_difficulty = 1
+    black_difficulty = 2
     # random_ai = ChessAi(evaluate_board_random, 0)
     # count_ai_1 = ChessAi(evaluate_board_simple_count, 1)
     white_player = ChessAi(evaluate_board_simple_count, white_difficulty)
@@ -91,4 +91,4 @@ def play_25():
 
 
 if __name__ == '__main__':
-    play_one('rnQ5/1p3k2/7p/2p5/P2q1P2/1pn3r1/R2P4/2BK4 w - - 2 41')
+    play_one()
