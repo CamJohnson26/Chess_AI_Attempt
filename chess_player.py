@@ -8,7 +8,7 @@ from chess_ai import ChessAi, evaluate_board_random, evaluate_board_simple_count
 def play_game(debug, fen=None):
 
     white_difficulty = 2
-    black_difficulty = 2
+    black_difficulty = 4
     # random_ai = ChessAi(evaluate_board_random, 0)
     # count_ai_1 = ChessAi(evaluate_board_simple_count, 1)
     white_player = ChessAi(evaluate_board_simple_count, white_difficulty)
@@ -19,12 +19,12 @@ def play_game(debug, fen=None):
     board = chess.Board()
     game = chess.pgn.Game()
     if fen is not None:
-        board.set_fen('rnQ5/1p3k2/7p/2p5/P2q1P2/1pn3r1/R2P4/2BK4 w - - 2 41')
+        board.set_fen(fen)
         game.setup(board)
     event = f"Cameron Chess AI- {time.time()}"
     game.headers["Event"] = event
     game.headers["White"] = str(white_player) + '-' + str(white_difficulty)
-    game.headers["Black"] = str('Cameron Johnson')
+    game.headers["Black"] = str(black_player) + '-' + str(black_difficulty)
     node = None
     white_to_move = True
     move_counter = 0
@@ -35,7 +35,7 @@ def play_game(debug, fen=None):
         if white_to_move:
             next_move = get_move_from_string(white_player.get_move(board), board)
         else:
-            next_move = get_human_move(board)
+            next_move = get_move_from_string(black_player.get_move(board), board)
         if next_move in board.legal_moves:
             move_counter += 1
             if node is None:

@@ -15,8 +15,8 @@ def find_tactics(lower_difficulty, higher_difficulty, game):
         prev_node = cur_node.parent
         cur_move = str(cur_node.move)
         board = prev_node.board()
-        weak_evals = lower_player.evaluate_moves(board)
-        high_evals = higher_player.evaluate_moves(board)
+        weak_evals = lower_player.rank_moves(board)
+        high_evals = higher_player.rank_moves(board)
 
         weak_eval = [move for move in weak_evals if move[1] == cur_move][0][0]
         high_eval = [move for move in high_evals if move[1] == cur_move][0][0]
@@ -33,8 +33,10 @@ def find_tactics(lower_difficulty, higher_difficulty, game):
             actually_winning = high_eval > 0 and weak_eval <= 0
             actually_losing = high_eval < 0 and weak_eval >= 0
             actually_tied = high_eval == 0 and not weak_eval == 0
+            board.push(cur_node.move)
 
             print(board.fen(), ' Difference: ', difference)
+            print(high_eval, weak_eval, cur_move)
             print(winning_by_more and 'Winning by More')
             print(losing_by_more and 'Losing by More')
             print(winning_by_less and 'Winning by Less')
@@ -47,4 +49,4 @@ def find_tactics(lower_difficulty, higher_difficulty, game):
 if __name__ == '__main__':
     game_name = 'Cameron Chess AI- 1663889481.4459834.pgn'
     game = chess.pgn.read_game(open(join('game_results', game_name)))
-    find_tactics(1, 3, game)
+    find_tactics(2, 4, game)

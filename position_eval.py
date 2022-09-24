@@ -16,12 +16,11 @@ def position_eval(fen, difficulties, debug):
         print(f'Difficulty: {difficulty}')
         for move in moves:
             print(move)
-        print(white_player.get_move(board))
 
 if __name__ == '__main__':
     fen = '''
     
-6nr/5k2/b3p1p1/7p/2P1P3/1P5P/1bp2PP1/2r2K1R w - - 0 39
+r1bqkbnr/ppp1pp1p/n2p2p1/8/3P1P2/PP5N/2PKP1PP/RNBQ1B1R b HAkq - 0 1
     
     '''
-    (position_eval(fen, [1, 3], False))
+    (position_eval(fen, [5], False))
