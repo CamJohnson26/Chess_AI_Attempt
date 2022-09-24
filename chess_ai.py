@@ -16,7 +16,7 @@ class ChessAi:
     # Worth noting: It looks depth_limit moves deep after the current player moves once, so limit of 3 looks 4 moves ahead
     def minimax(self, depth_limit, cur_depth, board, alpha=-9999, beta=9999, is_max_player=True):
         if cur_depth == 0:
-            a = self.eval_function(board) * (-1 if board.turn else 1)
+            a = self.eval_function(board) * (-1 if board.turn else 1) * (1 if is_max_player else -1)
             if a == 9999:
                 a = a - depth_limit # prefer an earlier checkmate
             if a == -9999:
