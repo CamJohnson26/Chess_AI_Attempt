@@ -27,7 +27,7 @@ if __name__ == '__main__':
         # ('r1b1k1nr/pppp1ppp/2n5/4p3/2B1P3/5Q2/PPPP1PPP/RNB1K1NR w KQkq - 0 1', 2, 9997, ['f3f7']),
         # Past Fail 1
         # ('r1bqkbnr/ppp1pp1p/n2p2p1/8/3P1P2/PP5N/2PKP1PP/RNBQ1B1R b HAkq - 0 1', 4, -1, ['c8h3', 'f8h6', 'g8f6', 'c8g4', 'f8g7', 'a6c5', 'e7e5', 'a6b8', 'c7c6', 'c7c5']),
-        ('r2qkbnr/1p2p1pp/2np1p2/p1p5/2PP2b1/1P5N/P1NBPPPP/R2QKBR1 b Qkq - 0 9', 4, 1, [])
+        ('r2qkbnr/1p2p1pp/2np1p2/p1p5/2PP2b1/1P5N/P1NBPPPP/R2QKBR1 b Qkq - 0 9', 4, -2, ['c6d4', 'c5d4'])
     ]
     for test_case in test_cases:
         print(test_case)
