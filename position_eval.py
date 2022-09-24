@@ -21,7 +21,7 @@ def position_eval(fen, difficulties, debug):
 if __name__ == '__main__':
     fen = '''
     
-6nr/5k2/b3p1p1/8/2P1P1P1/1PqK4/1b3P2/7r w - - 1 43
+6nr/5k2/b3p1p1/8/2P1P1p1/1P1K3P/1b3P2/2q4r w - - 0 42
     
     '''
     (position_eval(fen, [1, 3], False))
