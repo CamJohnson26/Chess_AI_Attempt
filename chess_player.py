@@ -7,7 +7,7 @@ from chess_ai import ChessAi, evaluate_board_random, evaluate_board_simple_count
 
 def play_game(debug, fen=None):
 
-    white_difficulty = 1
+    white_difficulty = 2
     black_difficulty = 2
     # random_ai = ChessAi(evaluate_board_random, 0)
     # count_ai_1 = ChessAi(evaluate_board_simple_count, 1)
@@ -24,7 +24,7 @@ def play_game(debug, fen=None):
     event = f"Cameron Chess AI- {time.time()}"
     game.headers["Event"] = event
     game.headers["White"] = str(white_player) + '-' + str(white_difficulty)
-    game.headers["Black"] = str(black_player) + '-' + str(black_difficulty)
+    game.headers["Black"] = str('Cameron Johnson')
     node = None
     white_to_move = True
     move_counter = 0
@@ -33,9 +33,9 @@ def play_game(debug, fen=None):
             print(white_to_move)
             print("%s\n" % board)
         if white_to_move:
-            next_move = white_player.get_move(board)
+            next_move = get_move_from_string(white_player.get_move(board), board)
         else:
-            next_move = black_player.get_move(board)
+            next_move = get_human_move(board)
         if next_move in board.legal_moves:
             move_counter += 1
             if node is None:
