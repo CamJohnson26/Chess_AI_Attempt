@@ -1,0 +1,9 @@
+[Event "Cameron Chess AI- 1663996709.7744613"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "<chess_ai.ChessAi object at 0x7f6ceeb878e0>-2"]
+[Black "<chess_ai.ChessAi object at 0x7f6ceeb87880>-4"]
+[Result "*"]
+
+1. Nh3 g6 2. Ng5 f6 3. Ne4 e6 4. g4 a5 5. h3 c6 6. b3 Qc7 7. c3 Qe5 8. Qc2 d5 9. Ng3 Kd8 10. h4 b5 11. Qd3 Ra6 12. e3 Nh6 13. Bh3 Qc7 14. a4 Qd6 15. Kf1 Kc7 16. axb5 cxb5 17. Qxb5 Rb6 18. Qxa5 Ba6+ 19. Ke1 Nc6 20. Qa4 Ne5 21. c4 Bb7 22. g5 Nf3+ 23. Ke2 Ra6 24. Nf5 Nxf5 25. c5 Qe5 26. Bb2 N3d4+ 27. Bxd4 Qe4 28. Bxf5 exf5 29. Be5+ Qxe5 30. f4 Qxa1 31. Qb5 Rc6 32. Rg1 Ba6 33. Qxa6 Rxa6 34. gxf6 Rc6 35. Kd3 Rxf6 36. b4 Kc8 37. Ke2 Be7 38. Kf2 Qb2 39. b5 Rff8 40. Kf3 Bxh4 41. b6 Bd8 42. d3 Rf6 43. d4 Qa1 44. Rh1 Re6 45. Rg1 Kb7 46. Rh1 Bf6 47. Rg1 Bg7 48. Rh1 Rg8 49. Rg1 Rc6 50. Rh1 h5 51. Rg1 Ka6 52. Rh1 Kb5 53. Rg1 Ra8 54. Rh1 Rd8 55. b7 Ka6 56. Rxh5 gxh5 57. Nc3 Qf1+ 58. Kg3 Rg6+ 59. Kh4 Qh1# *

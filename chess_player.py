@@ -33,9 +33,9 @@ def play_game(debug, fen=None):
             print(white_to_move)
             print("%s\n" % board)
         if white_to_move:
-            next_move = get_move_from_string(white_player.get_move(board), board)
+            next_move = white_player.get_move(board)
         else:
-            next_move = get_move_from_string(black_player.get_move(board), board)
+            next_move = black_player.get_move(board)
         if next_move in board.legal_moves:
             move_counter += 1
             if node is None:

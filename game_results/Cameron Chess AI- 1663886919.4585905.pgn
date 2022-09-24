@@ -1,0 +1,11 @@
+[Event "Cameron Chess AI- 1663886919.4585905"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "<chess_ai.ChessAi object at 0x7fd8f76038b0>-2"]
+[Black "<chess_ai.ChessAi object at 0x7fd8f7603850>-5"]
+[Result "*"]
+[FEN "rnQ5/1p3k2/7p/2p5/P2q1P2/1pn3r1/R2P4/2BK4 w - - 2 41"]
+[SetUp "1"]
+
+41. Ke1 Qg1# *

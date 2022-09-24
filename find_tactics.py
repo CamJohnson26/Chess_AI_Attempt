@@ -47,6 +47,6 @@ def find_tactics(lower_difficulty, higher_difficulty, game):
         cur_node = prev_node
 
 if __name__ == '__main__':
-    game_name = 'Cameron Chess AI- 1663889481.4459834.pgn'
+    game_name = 'Cameron Chess AI- 1663996709.7744613.pgn'
     game = chess.pgn.read_game(open(join('game_results', game_name)))
     find_tactics(2, 4, game)
